@@ -28,8 +28,15 @@ def part1_simple(dimensions_list: List[int]) -> int:
     lowest_surface_areas = [min(surface_areas_of_this_box) for surface_areas_of_this_box in boxes_surface_areas]
     return sum(lowest_surface_areas) + boxes_total_areas
 
+def part2_simple(dimensions_list: List[int]) -> int:
+    total_volumes = sum(box_dimensions[0] * box_dimensions[1] * box_dimensions[2] for box_dimensions in dimensions_list)
+    max_side_measurement = [max(box_dimensions) for box_dimensions in dimensions_list]
+    return total_volumes + 2 * sum(sum(box_dimensions) for box_dimensions in dimensions_list) - 2 * sum(max_side_measurement)
+
+
 if __name__=="__main__":
     list_of_input_lines = read_inputs_as_list("input.txt")
     list_of_dimensions = [convert_line_str_into_dim_list(line) for line in list_of_input_lines]
     print(list_of_dimensions)
     print(part1_simple(list_of_dimensions))
+    print(part2_simple(list_of_dimensions))
