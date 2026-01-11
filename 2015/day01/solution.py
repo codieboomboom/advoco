@@ -14,6 +14,7 @@ def part1_with_counter(input: str) -> int:
     return counter_map['('] - counter_map[')']
 
 def part1_with_generator(input: str) -> int:
+    # TODO: Look more into generator for Python language
     return sum(1 if c == '(' else -1 for c in input)
 
 def part1_raw(input: str) -> int:
@@ -35,6 +36,7 @@ def part2_with_loop(input:str) -> int:
     return idx
 
 def part2_with_fancy_itertools(input:str) -> int:
+    # TODO: look more into itertools and how it works with generator
     floors = accumulate(1 if c == '(' else -1 for c in input)
     TARGET = -1
     index = next(

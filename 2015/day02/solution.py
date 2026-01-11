@@ -11,6 +11,7 @@ def convert_line_str_into_dim_list(line: str) -> List[int]:
     return dimensions
 
 def part1_simple(dimensions_list: List[int]) -> int:
+    # TODO: Try to refactor with some short form for combinations (suggeted to use itertools)
     boxes_surface_areas = [] # per each box
     boxes_total_areas = 0
     surface_D = 2
@@ -29,6 +30,7 @@ def part1_simple(dimensions_list: List[int]) -> int:
     return sum(lowest_surface_areas) + boxes_total_areas
 
 def part2_simple(dimensions_list: List[int]) -> int:
+    # TODO: is there an equivalent to sum but in product ? suggested to use reduce?
     total_volumes = sum(box_dimensions[0] * box_dimensions[1] * box_dimensions[2] for box_dimensions in dimensions_list)
     max_side_measurement = [max(box_dimensions) for box_dimensions in dimensions_list]
     return total_volumes + 2 * sum(sum(box_dimensions) for box_dimensions in dimensions_list) - 2 * sum(max_side_measurement)
