@@ -39,6 +39,7 @@ def part2_naive(input:str) -> int:
     # Santa and Robot starts at same state
     santa_pos, robot_pos = [0,0], [0,0]
     unique_positions = set()
+    # TODO: Don't convert to tuple takes time? How to speed this up actually
     unique_positions.add(tuple(santa_pos))
 
     deltas = convert_input_str_into_post_deltas(input)
