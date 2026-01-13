@@ -1,6 +1,6 @@
 import hashlib
 
-def part1_naive(priv_key_prefix: str) -> int:
+def solve_for_pattern(priv_key_prefix: str, pattern: str) -> int:
     suffix = 1
     while True:
         # Encode to bytes before use with hashlib
@@ -8,11 +8,12 @@ def part1_naive(priv_key_prefix: str) -> int:
         encoded_text_to_hash = (priv_key_prefix + str(suffix)).encode()
         h.update(encoded_text_to_hash)
         digest = h.hexdigest()
-        if digest.startswith("00000"):
+        if digest.startswith(pattern):
             return suffix
         suffix += 1
     
 
 if __name__=="__main__":
     priv_key_prefix = 'yzbqklnj'
-    print(part1_naive(priv_key_prefix))
+    print(solve_for_pattern(priv_key_prefix, '00000'))
+    print(solve_for_pattern(priv_key_prefix, '000000'))
